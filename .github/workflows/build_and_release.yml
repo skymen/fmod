@@ -1,0 +1,64 @@
+name: Build and Release Multiple Addons
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [skymen_fmod, skymen_fmod_cpp, skymen_fmod_js]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Build (Matrix)
+        run: |
+          cd ${{ matrix.project }}
+          npm ci
+          npm run build
+          npm run doc
+          last_modified_file=$(ls -Art dist | tail -n 1)
+          version=$(echo $last_modified_file | sed -n 's/.*-\([0-9.]*\).c3addon/\1/p')
+          echo "${{ matrix.project }}_version=$version" >> $GITHUB_ENV
+          echo "Last modified file version: $version"
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.project }}
+          path: ${{ matrix.project }}/dist/*.c3addon
+
+  create-release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+
+      - name: Create Release Tag
+        run: |
+          echo "FMOD v${{ env.skymen_fmod_version }} | JS v${{ env.skymen_fmod_js_version }} | C++ v${{ env.skymen_fmod_cpp_version }}" > release_tag.txt
+          echo "RELEASE_TAG=$(cat release_tag.txt)" >> $GITHUB_ENV
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ env.RELEASE_TAG }}
+          name: ${{ env.RELEASE_TAG }}
+          body: "Release containing FMOD, JS, and C++ Addons"
+          allowUpdates: true
+          makeLatest: true
+          artifacts: |
+            skymen_fmod/dist/*.c3addon
+            skymen_fmod_cpp/dist/*.c3addon
+            skymen_fmod_js/dist/*.c3addon
