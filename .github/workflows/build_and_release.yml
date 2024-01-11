@@ -47,14 +47,16 @@ jobs:
 
       - name: Create Release Tag
         run: |
-          echo "FMOD v${{ env.skymen_fmod_version }} | JS v${{ env.skymen_fmod_js_version }} | C++ v${{ env.skymen_fmod_cpp_version }}" > release_tag.txt
+          echo "FMOD v${{ env.skymen_fmod_version }} | JS v${{ env.skymen_fmod_js_version }} | C++ v${{ env.skymen_fmod_cpp_version }}" > release_name.txt
+          echo "${{ env.skymen_fmod_version }}_${{ env.skymen_fmod_js_version }}_${{ env.skymen_fmod_cpp_version }}" > release_tag.txt
           echo "RELEASE_TAG=$(cat release_tag.txt)" >> $GITHUB_ENV
+          echo "RELEASE_NAME=$(cat release_name.txt)" >> $GITHUB_ENV
 
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ env.RELEASE_TAG }}
-          name: ${{ env.RELEASE_TAG }}
+          name: ${{ env.RELEASE_NAME }}
           body: "Release containing FMOD, JS, and C++ Addons"
           allowUpdates: true
           makeLatest: true
