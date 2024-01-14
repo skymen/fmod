@@ -32,6 +32,7 @@ jobs:
           echo "${{ matrix.project }}_version=$version" >> $GITHUB_ENV
           echo "Last modified file version: $version"
           echo "$version" > ${{ matrix.project }}-version.txt
+          echo "${{ matrix.project }}-version.txt"
           cat ${{ matrix.project }}-version.txt
 
       - name: Upload Artifacts
@@ -44,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.project }}-version
-          path: ./${{ matrix.project }}-version.txt
+          path: ${{ matrix.project }}-version.txt
 
   create-release:
     needs: build
