@@ -3,7 +3,7 @@ module.exports = {
   addonType: "plugin",
   id: "skymen_fmod_cpp",
   name: "(FMOD) C++ API",
-  version: "1.0.0.0",
+  version: "0.0.0.0",
   category:
     // "3d",
     // "data-and-storage",
