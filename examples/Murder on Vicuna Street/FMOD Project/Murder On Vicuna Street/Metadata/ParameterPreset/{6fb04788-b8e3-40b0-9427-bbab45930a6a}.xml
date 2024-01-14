@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{6fb04788-b8e3-40b0-9427-bbab45930a6a}">
+		<property name="name">
+			<value>AmbianceTitleScreen</value>
+		</property>
+		<relationship name="folder">
+			<destination>{e3919040-caef-4b6b-95a0-ac37f03a35e4}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{aea1f2f4-7ea9-4534-a400-b13bec3a9e92}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{aea1f2f4-7ea9-4534-a400-b13bec3a9e92}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>2</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

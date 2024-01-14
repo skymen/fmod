@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{4489782b-a065-4eab-a242-0d15a8eb76e5}">
+		<property name="assetPath">
+			<value>Sounds/Voices/Bashar/Bahar_ah4.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.4179591836734694</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{aec4d34d-7f5c-4367-a389-ea67dfd58ce1}</destination>
+		</relationship>
+	</object>
+</objects>

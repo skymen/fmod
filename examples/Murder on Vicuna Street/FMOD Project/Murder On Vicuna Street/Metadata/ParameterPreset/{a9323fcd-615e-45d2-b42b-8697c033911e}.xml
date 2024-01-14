@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{a9323fcd-615e-45d2-b42b-8697c033911e}">
+		<property name="name">
+			<value>TransitionVolume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{e3919040-caef-4b6b-95a0-ac37f03a35e4}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{bfedb208-77bd-488d-b6c0-0c25d72b4f14}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{bfedb208-77bd-488d-b6c0-0c25d72b4f14}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

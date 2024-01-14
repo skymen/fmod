@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d1d8b478-c723-4885-a50c-cc39d619b9c9}">
+		<property name="assetPath">
+			<value>Sounds/Voices/Gabriel/Gabriel_ah2.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.47020408163265304</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{aec4d34d-7f5c-4367-a389-ea67dfd58ce1}</destination>
+		</relationship>
+	</object>
+</objects>

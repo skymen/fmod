@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{acfd4a38-c78a-4127-b833-33e1994743e9}">
+		<property name="name">
+			<value>WeirdMusic</value>
+		</property>
+		<relationship name="folder">
+			<destination>{e3919040-caef-4b6b-95a0-ac37f03a35e4}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{df2a8580-6d5e-44ef-8cd5-afff6ae1eaf7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{df2a8580-6d5e-44ef-8cd5-afff6ae1eaf7}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.89999997615814209</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>
