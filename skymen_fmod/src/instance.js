@@ -444,7 +444,8 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
       const layout = this._runtime.GetMainRunningLayout();
       const [x, y, z] = layout.Get3DCameraPosition();
       const [ux, uy, uz] = inst._GetUpVector();
-      const [fx, fy, fz] = inst._GetForwardVector();
+      const [lx, ly, lz] = layout.Get3DCameraLookAt();
+      const [fx, fy, fz] = [lx - x, ly - y, lz - z];
       await this._SetListener3DAttributes(
         id,
         x,

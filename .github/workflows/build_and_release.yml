@@ -44,6 +44,11 @@ jobs:
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v3
+        with:
+          path: artifacts
+
+      - name: Display structure of downloaded files
+        run: ls -R path/to/artifacts
 
       - name: Create Release Tag
         run: |
@@ -61,6 +66,6 @@ jobs:
           allowUpdates: true
           makeLatest: true
           artifacts: |
-            skymen_fmod/dist/*.c3addon
-            skymen_fmod_cpp/dist/*.c3addon
-            skymen_fmod_js/dist/*.c3addon
+            artifacts/skymen_fmod/*.c3addon
+            artifacts/skymen_fmod_cpp/*.c3addon
+            artifacts/skymen_fmod_js/*.c3addon
