@@ -65,9 +65,9 @@ jobs:
           fmod_cpp_version=$(cat artifacts/skymen_fmod_cpp-version/skymen_fmod_cpp-version.txt)
           fmod_js_version=$(cat artifacts/skymen_fmod_js-version/skymen_fmod_js-version.txt)
           echo "FMOD v$fmod_version | JS v$fmod_js_version | C++ v$fmod_cpp_version"
-          echo "$fmod_version_$fmod_js_version_$fmod_cpp_version"
-          echo "FMOD v$fmod_version | JS v$fmod_js_version | C++ v$fmod_cpp_version > release_name.txt
-          echo "$fmod_version_$fmod_js_version_$fmod_cpp_version" > release_tag.txt
+          echo "$(fmod_version)_$(fmod_js_version)_$(fmod_cpp_version)"
+          echo "FMOD v$fmod_version | JS v$fmod_js_version | C++ v$fmod_cpp_version" > release_name.txt
+          echo "$(fmod_version)_$(fmod_js_version)_$(fmod_cpp_version)" > release_tag.txt
           echo "RELEASE_TAG=$(cat release_tag.txt)" >> $GITHUB_ENV
           echo "RELEASE_NAME=$(cat release_name.txt)" >> $GITHUB_ENV
 
