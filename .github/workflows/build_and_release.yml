@@ -31,9 +31,9 @@ jobs:
           version=$(echo $last_modified_file | sed -n 's/.*-\([0-9.]*\).c3addon/\1/p')
           echo "${{ matrix.project }}_version=$version" >> $GITHUB_ENV
           echo "Last modified file version: $version"
-          echo "$version" > ${{ matrix.project }}-version.txt
-          echo "${{ matrix.project }}-version.txt"
-          cat ${{ matrix.project }}-version.txt
+          echo "$version" > ../${{ matrix.project }}-version.txt
+          echo "../${{ matrix.project }}-version.txt"
+          cat ../${{ matrix.project }}-version.txt
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
