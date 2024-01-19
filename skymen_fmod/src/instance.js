@@ -483,7 +483,7 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
         id,
         x,
         y,
-        0, //z,
+        100, //z,
         vx,
         vy,
         0, //vz,
@@ -527,7 +527,7 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
       const layout = this._runtime.GetMainRunningLayout();
       const x = layout.GetScrollX();
       const y = layout.GetScrollY();
-      await this._SetListener3DAttributesSimple(id, x, y, 0);
+      await this._SetListener3DAttributesSimple(id, x, y, 100);
     }
 
     async _SetListenerWeight(id, weight) {
