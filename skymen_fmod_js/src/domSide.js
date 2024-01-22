@@ -24,6 +24,7 @@
       this.banksByName = new Map();
       this.banksByPath = new Map();
       this.SetUpDOMHandlers();
+      this.nextTickArray = [];
     }
 
     // ===== SET UP FUNCTIONS
@@ -174,6 +175,10 @@
           ([suspended, time]) => this.setSuspended(suspended, time),
         ],
       ]);
+    }
+
+    nextTick(fn) {
+      this.nextTickArray.push(fn);
     }
 
     PreInitLoadBank(path, preload, nonBlocking, name, url) {
@@ -516,10 +521,14 @@
       });
 
       if (destroyWhenStopped) {
-        this.events[event].allInstances = this.events[
-          event
-        ].allInstances.filter((instance) => !instancesInTag.includes(instance));
-        this.events[event].instance.set(tag, []);
+        this.nextTick(() => {
+          this.events[event].allInstances = this.events[
+            event
+          ].allInstances.filter(
+            (instance) => !instancesInTag.includes(instance)
+          );
+          this.events[event].instance.set(tag, []);
+        });
       }
     }
 
@@ -799,6 +808,8 @@
 
     update() {
       if (!this.banks || !this.gSystem || !this.gSystemCore) return;
+      this.nextTickArray.forEach((fn) => fn());
+      this.nextTickArray = [];
       /*
       var outval = {};
       for (let i = 0; i < this.banks.length; i++) {

@@ -3,7 +3,7 @@ module.exports = {
   addonType: "plugin",
   id: "skymen_fmod",
   name: "(FMOD)",
-  version: "1.0.0.1",
+  version: "1.0.0.2",
   category:
     // "3d",
     // "data-and-storage",
@@ -330,7 +330,7 @@ module.exports = {
       listName: "Start One Time Event",
       displayText: "Start one time event [i]{0}[/i]",
       description:
-        "Start the specified FMOD event as a one-time event. This instance will be released immediately after the event is stopped.",
+        "Start the specified FMOD event as a one-time event. This instance will be released immediately.",
     },
     InstantiateEvent: {
       category: "event",
@@ -382,8 +382,8 @@ module.exports = {
         },
         {
           id: "destroyWhenStopped",
-          name: "Destroy when stopped",
-          desc: "",
+          name: "Release",
+          desc: "Releasing this event will free its memory when it stops playing and will remove it from the tag on the next tick",
           type: "boolean",
           initialValue: "true",
         },
@@ -589,7 +589,7 @@ module.exports = {
         {
           id: "release",
           name: "Release",
-          desc: "Immediately release the stopped event instance",
+          desc: "Releasing this event will free its memory when it stops playing and will remove it from the tag.",
           type: "boolean",
           initialValue: "true",
         },
@@ -624,7 +624,7 @@ module.exports = {
         {
           id: "release",
           name: "Release",
-          desc: "Immediately release the stopped event instance",
+          desc: "Releasing this event will free its memory when it stops playing and will remove it from the tag.",
           type: "boolean",
           initialValue: "true",
         },

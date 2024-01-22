@@ -313,7 +313,7 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
       vz
     ) {
       if (!this.curInst) return;
-      const inst = objectClass._instances[0]._sdkInst;
+      const inst = objectClass.GetFirstPicked()._sdkInst;
       const [x, y, z] = [
         inst.GetWorldInfo().GetX(),
         inst.GetWorldInfo().GetY(),
