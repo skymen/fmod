@@ -347,21 +347,30 @@
       this.initSystem();
 
       // Set up iOS/Chrome workaround.  Webaudio is not allowed to start unless screen is touched or button is clicked.
-      const resumeAudio = () => {
+      const resumeAudio = (realTry = true) => {
         if (!this.gAudioResumed) {
           this.assert(this.gSystemCore.mixerSuspend());
           this.assert(this.gSystemCore.mixerResume());
-          this.gAudioResumed = true;
+          if (realTry) {
+            this.gAudioResumed = true;
+          }
         }
       };
 
-      var iOS =
-        /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-      if (iOS) {
-        window.addEventListener("touchend", resumeAudio, false);
-      } else {
-        document.addEventListener("click", resumeAudio);
-      }
+      const interactionEvents = [
+        "click",
+        "touchstart",
+        "keydown",
+        "mousedown",
+        "mouseup",
+        "mousemove",
+        "touchmove",
+        "touchend",
+        "touchcancel",
+      ];
+      interactionEvents.forEach((event) => {
+        document.addEventListener(event, resumeAudio);
+      });
 
       this.assert(
         this.gSystem.setCallback(
@@ -373,6 +382,8 @@
       this._loaded = true;
       this._initCallbacks.forEach((cb) => cb());
       this._initCallbacks = [];
+
+      resumeAudio(false);
 
       return this.FMOD.OK;
     }
