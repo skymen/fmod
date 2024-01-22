@@ -350,8 +350,12 @@
       const resumeAudio = (realTry = true) => {
         if (!this.gAudioResumed) {
           this.FMOD["OutputAudioWorklet_resumeAudio"]();
+          this.assert(this.gSystemCore.mixerSuspend());
+          this.assert(this.gSystemCore.mixerResume());
           if (realTry) {
             this.gAudioResumed = true;
+          } else {
+            this.FMOD.mInputRegistered = true;
           }
         }
       };
