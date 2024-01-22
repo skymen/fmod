@@ -349,8 +349,7 @@
       // Set up iOS/Chrome workaround.  Webaudio is not allowed to start unless screen is touched or button is clicked.
       const resumeAudio = (realTry = true) => {
         if (!this.gAudioResumed) {
-          this.assert(this.gSystemCore.mixerSuspend());
-          this.assert(this.gSystemCore.mixerResume());
+          this.FMOD["OutputAudioWorklet_resumeAudio"]();
           if (realTry) {
             this.gAudioResumed = true;
           }
@@ -363,8 +362,6 @@
         "keydown",
         "mousedown",
         "mouseup",
-        "mousemove",
-        "touchmove",
         "touchend",
         "touchcancel",
       ];
