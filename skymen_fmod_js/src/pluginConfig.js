@@ -3,7 +3,7 @@ module.exports = {
   addonType: "plugin",
   id: "skymen_fmod_js",
   name: "(FMOD) JS API",
-  version: "1.0.0.2",
+  version: "1.0.0.3",
   category:
     // "3d",
     // "data-and-storage",

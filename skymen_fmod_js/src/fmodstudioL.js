@@ -35,6 +35,13 @@ var FMODModule = (function () {
       typeof process === "object" &&
       typeof process.versions === "object" &&
       typeof process.versions.node === "string";
+    if (ENVIRONMENT_IS_NODE) {
+      try {
+        if (__dirname === undefined) ENVIRONMENT_IS_NODE = false;
+      } catch (error) {
+        ENVIRONMENT_IS_NODE = false;
+      }
+    }
     ENVIRONMENT_IS_SHELL =
       !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIRONMENT_IS_WORKER;
     var scriptDirectory = "";
