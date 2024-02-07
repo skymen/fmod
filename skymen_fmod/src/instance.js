@@ -522,12 +522,20 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
         0 //az
       );
     }
+
     async _SetListener3DAttributesSimpleFromScrollPosition(id) {
       if (!this.curInst) return;
       const layout = this._runtime.GetMainRunningLayout();
       const x = layout.GetScrollX();
       const y = layout.GetScrollY();
-      await this._SetListener3DAttributesSimple(id, x, y, 100);
+      await this._SetListener3DAttributesFromScrollPosition(
+        id,
+        0,
+        0,
+        true,
+        x,
+        y
+      );
     }
 
     async _SetListenerWeight(id, weight) {
