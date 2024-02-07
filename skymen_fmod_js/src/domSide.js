@@ -338,6 +338,16 @@
           null
         )
       );
+
+      this.assert(
+        this.gSystem.setAdvancedSettings({
+          commandqueuesize: 0,
+          handleinitialsize: 0,
+          studioupdateperiod: 5,
+          idlesampledatapoolsize: 0,
+          streamingscheduledelay: 0,
+        })
+      );
     }
 
     onRuntimeInitialized() {
