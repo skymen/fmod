@@ -192,6 +192,24 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
         destroyWhenStopped,
       ]);
     }
+
+    async _StartEventAtObject(
+      name,
+      tag,
+      objectClass,
+      destroyWhenStopped,
+      forwardMode
+    ) {
+      // reusing actions that are already implemented
+      await this._StartEvent(name, tag, destroyWhenStopped);
+      await this._SetEvent3DAttributesFromObject(
+        name,
+        tag,
+        objectClass,
+        forwardMode
+      );
+    }
+
     async _SetEventParameter(name, tag, param, value, ignoreSeekSpeed) {
       if (!this.curInst) return;
       await this.curInst.SendMessageAsync("set-event-parameter", [

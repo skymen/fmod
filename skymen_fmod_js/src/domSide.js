@@ -287,6 +287,7 @@
 
     assert(result) {
       if (result != this.FMOD.OK) {
+        console.error("FMOD error:", this.FMOD.ErrorString(result));
         throw this.FMOD.ErrorString(result);
       }
     }
@@ -331,15 +332,6 @@
       );
 
       this.assert(
-        this.gSystem.initialize(
-          1024,
-          this.FMOD.STUDIO_INIT_NORMAL,
-          this.FMOD.INIT_NORMAL,
-          null
-        )
-      );
-
-      this.assert(
         this.gSystem.setAdvancedSettings({
           commandqueuesize: 0,
           handleinitialsize: 0,
@@ -347,6 +339,15 @@
           idlesampledatapoolsize: 0,
           streamingscheduledelay: 0,
         })
+      );
+
+      this.assert(
+        this.gSystem.initialize(
+          1024,
+          this.FMOD.STUDIO_INIT_NORMAL,
+          this.FMOD.INIT_NORMAL,
+          null
+        )
       );
     }
 
@@ -714,7 +715,7 @@
       if (!instancesInTag || instancesInTag.length === 0) {
         return;
       }
-      const attributes = this.FMOD._3D_ATTRIBUTES();
+      const attributes = { ...this.FMOD._3D_ATTRIBUTES() };
       attributes.position = {
         x,
         y,
@@ -760,7 +761,7 @@
       az
     ) {
       if (!this.gSystem) return;
-      const attributes = this.FMOD._3D_ATTRIBUTES();
+      const attributes = { ...this.FMOD._3D_ATTRIBUTES() };
       attributes.position = {
         x,
         y,
